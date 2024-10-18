@@ -2,7 +2,7 @@
 import express from "express";
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 8080;
 const cors = require("cors");
 
 app.use(cors());
@@ -10,6 +10,10 @@ app.use(express.json());
 
 app.get("/", (_, res) => {
 	res.send("Hello World!");
+});
+
+app.get("/hello", (_, res) => {
+	res.send("Whats up? can you hear me?");
 });
 
 app.listen(port, () => {
