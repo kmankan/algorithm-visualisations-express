@@ -2,18 +2,19 @@
 import express from "express";
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = 8080;
 const cors = require("cors");
 
-app.use(cors());
+app.use(cors({
+  origin: '*', // Be more specific in production
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 app.get("/", (_, res) => {
 	res.send("Hello World!");
-});
-
-app.get("/hello", (_, res) => {
-	res.send("Whats up? can you hear me?");
 });
 
 app.listen(port, () => {
